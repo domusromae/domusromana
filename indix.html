@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Domus Romana | B&B a Roma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts per carattere romano elegante -->
+<link href="https://fonts.googleapis.com/css2?family=Trajan+Pro:wght@700&display=swap" rel="stylesheet">
+
+<style>
+/* --- Stile generale --- */
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  background:#faf7f4;
+  color:#2c2c2c;
+  line-height:1.7;
+}
+
+/* --- Header compatto --- */
+header{
+  background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45));
+  color:#fff;
+  padding:60px 20px;
+  text-align:center;
+}
+h1{
+  font-family:'Trajan Pro', serif;
+  font-size:3em;
+  margin:0;
+  letter-spacing:2px;
+}
+
+/* --- Pulsanti lingua piccoli e distanziati --- */
+.lang{
+  text-align:center;
+  margin-top:20px;
+}
+.lang button{
+  margin:0 25px;
+  padding:6px 16px;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  cursor:pointer;
+  color:white;
+  background:black;
+  font-size:0.9em;
+  transition: all 0.3s ease;
+}
+.lang button:hover{
+  background:#333;
+}
+
+/* --- Sezioni --- */
+section{
+  padding:50px 20px;
+  max-width:1000px;
+  margin:auto;
+  opacity:0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+section.visible{
+  opacity:1;
+  transform: translateY(0);
+}
+h2{text-align:center;color:#2c2c2c;margin-bottom:40px}
+
+/* --- Camere --- */
+.camere{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition: transform 0.3s ease;
+}
+.card:hover{
+  transform: translateY(-5px);
+}
+
+/* --- Centrare testo --- */
+.center{text-align:center}
+
+/* --- Pulsante WhatsApp --- */
+.whatsapp{
+  background:#25D366;
+  color:#fff;
+  padding:15px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  display:inline-block;
+  margin:15px;
+  font-size:1.1em;
+}
+
+/* --- Booking / Airbnb bianchi --- */
+.booking a{
+  margin:10px;
+  display:inline-block;
+  padding:12px 20px;
+  border:1px solid #fff;
+  border-radius:25px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  transition: all 0.3s ease;
+}
+.booking a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* --- Form --- */
+form{
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  max-width:500px;
+  margin:40px auto;
+}
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-family:Arial,sans-serif;
+}
+button{
+  background:#000;
+  color:#fff;
+  border:none;
+  padding:14px;
+  width:100%;
+  border-radius:30px;
+  font-size:1em;
+  cursor:pointer;
+}
+
+/* --- Footer bianco --- */
+footer{
+  background:#fff;
+  color:#2c2c2c;
+  text-align:center;
+  padding:25px;
+  border-top:1px solid #ccc;
+}
+
+/* --- Lingua EN nascosta di default --- */
+.en{display:none;}
+
+/* --- Responsive / Smartphone --- */
+@media screen and (max-width: 768px){
+  header{
+    padding:40px 10px;
+  }
+  h1{
+    font-size:2.2em;
+  }
+  .lang button{
+    margin:0 15px;
+    padding:5px 12px;
+    font-size:0.8em;
+  }
+  .camere{
+    grid-template-columns:1fr;
+  }
+  section{
+    padding:40px 15px;
+  }
+  .booking a{
+    padding:10px 16px;
+    margin:5px;
+  }
+  .whatsapp{
+    padding:12px 20px;
+    font-size:1em;
+  }
+}
+</style>
+
+<script>
+function lang(l){
+  document.querySelectorAll('.it').forEach(e=>e.style.display=l==='it'?'block':'none');
+  document.querySelectorAll('.en').forEach(e=>e.style.display=l==='en'?'block':'none');
+}
+
+// --- Effetto fade-in al scroll ---
+function fadeInOnScroll(){
+  const elements = document.querySelectorAll('section');
+  const windowHeight = window.innerHeight;
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    if(position < windowHeight - 100){
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
+</script>
+
+</head>
+<body>
+
+<header>
+<h1>Domus Romana</h1>
+<p class="it">Ospitalità elegante nel cuore eterno di Roma</p>
+<p class="en">Elegant hospitality in the eternal heart of Rome</p>
+
+<div class="lang">
+  <button onclick="lang('it')">IT</button>
+  <button onclick="lang('en')">EN</button>
+</div>
+</header>
+
+<section>
+<h2 class="it">Benvenuti</h2>
+<h2 class="en">Welcome</h2>
+<p class="center it">Un B&B raffinato, romantico e professionale ispirato all’antica Roma.</p>
+<p class="center en">A refined, romantic and professional B&B inspired by ancient Rome.</p>
+</section>
+
+<section>
+<h2 class="it">Camere</h2>
+<h2 class="en">Rooms</h2>
+<div class="camere">
+<div class="card">
+<h3 class="it">Matrimoniale</h3>
+<h3 class="en">Double Room</h3>
+<p class="it">Elegante, silenziosa, con bagno privato e aria condizionata.</p>
+<p class="en">Elegant, quiet, with private bathroom and air conditioning.</p>
+</div>
+<div class="card">
+<h3 class="it">Doppia</h3>
+<h3 class="en">Twin Room</h3>
+<p class="it">Perfetta per amici o famiglie, luminosa e confortevole.</p>
+<p class="en">Perfect for friends or families, bright and comfortable.</p>
+</div>
+<div class="card">
+<h3 class="it">Suite Romana</h3>
+<h3 class="en">Roman Suite</h3>
+<p class="it">Ampia e romantica, ideale per un soggiorno speciale.</p>
+<p class="en">Spacious and romantic, ideal for a special stay.</p>
+</div>
+</div>
+</section>
+
+<section class="center">
+<h2 class="it">Contatti & Prenotazioni</h2>
+<h2 class="en">Contacts & Reservations</h2>
+
+<a class="whatsapp" href="https://wa.me/393520673914" target="_blank">💬 WhatsApp</a>
+
+<div class="booking">
+<a href="#">Booking.com</a>
+<a href="#">Airbnb</a>
+</div>
+
+<form id="contact-form" action="https://formspree.io/f/xkovwqdj" method="POST">
+  <input name="nome" placeholder="Nome" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input name="date" placeholder="Date soggiorno">
+  <textarea name="messaggio" placeholder="Richiesta camere / Messaggio" required></textarea>
+  <button type="submit">Invia richiesta</button>
+  <p id="form-status" style="margin-top:10px; color:green; display:none;">Messaggio inviato! Ti risponderemo al più presto.</p>
+</form>
+
+<script>
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      status.style.display = 'block';
+      form.reset();
+    } else {
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          alert(data["errors"].map(error => error["message"]).join(", "));
+        } else {
+          alert("Si è verificato un errore, riprova più tardi.");
+        }
+      });
+    }
+  })
+  .catch(error => {
+    alert("Si è verificato un errore, riprova più tardi.");
+  });
+});
+</script>
+</section>
+
+<footer>
+<p>© 2026 Domus Romana – Roma</p>
+<p>Tel. 352 067 3914</p>
+</footer>
+
+</body>
+</html>
